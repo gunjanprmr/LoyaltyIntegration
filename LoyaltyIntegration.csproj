@@ -154,6 +154,15 @@
     <Compile Include="Models\LoyaltyRewards\Rewards.cs" />
     <Compile Include="Models\LoyaltyTiers\Tier.cs" />
     <Compile Include="Models\LoyaltyTiers\Tiers.cs" />
+    <Compile Include="Models\LoyaltyUsers\ProgramOptin.cs" />
+    <Compile Include="Models\LoyaltyUsers\User.cs" />
+    <Compile Include="Models\LoyaltyUsers\UserEarnings.cs" />
+    <Compile Include="Models\LoyaltyUsers\UserPoint.cs" />
+    <Compile Include="Models\LoyaltyUsers\UserPoints.cs" />
+    <Compile Include="Models\LoyaltyUsers\UserPrograms.cs" />
+    <Compile Include="Models\LoyaltyUsers\UserReward.cs" />
+    <Compile Include="Models\LoyaltyUsers\UserRewards.cs" />
+    <Compile Include="Models\LoyaltyUsers\Users.cs" />
     <Compile Include="Models\Loyalty\Localization.cs" />
     <Compile Include="Models\Loyalty\LocalizationImage.cs" />
     <Compile Include="Models\Loyalty\LoyaltyProgram.cs" />
