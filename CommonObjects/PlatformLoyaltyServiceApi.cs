@@ -8,6 +8,7 @@ using LoyaltyIntegration.Models.Enum;
 using LoyaltyIntegration.Models.Loyalty;
 using LoyaltyIntegration.Models.LoyaltyRewards;
 using LoyaltyIntegration.Models.LoyaltyTiers;
+using LoyaltyIntegration.Models.LoyaltyUsers;
 using Newtonsoft.Json;
 using HttpClientFactory = LoyaltyIntegration.Framework.HttpClientFactory;
 
@@ -117,6 +118,21 @@ namespace LoyaltyIntegration.CommonObjects
 
         #endregion Reward
 
+        #region User
+
+        public Users UsersResponse(PlatformLoyaltyServiceRequestType requestType,
+            PlatformLoyaltyServiceRequest commonRequest, string method)
+        {
+            var response = HttpResponseMessage(requestType, commonRequest, method);
+
+            var allUsers = response.IsSuccessStatusCode
+                ? GenericResponse<Users>(requestType, response)
+                : throw new Exception((int) response.StatusCode + "-" + response.StatusCode);
+            return allUsers;
+        }
+
+        #endregion User
+
         #region Common Objects
 
         private T GenericResponse<T>(PlatformLoyaltyServiceRequestType requestType,
@@ -150,6 +166,9 @@ namespace LoyaltyIntegration.CommonObjects
                 case PlatformLoyaltyServiceRequestType.UpdateRewardById:
                 case PlatformLoyaltyServiceRequestType.GetRewardById:
                     genericType = (T) JsonConvert.DeserializeObject(data, typeof(Reward));
+                    break;
+                case PlatformLoyaltyServiceRequestType.AllUsers:
+                    genericType = (T) JsonConvert.DeserializeObject(data, typeof(Users));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(requestType), requestType, null);
@@ -207,6 +226,9 @@ namespace LoyaltyIntegration.CommonObjects
                 case PlatformLoyaltyServiceRequestType.UpdateRewardById:
                     uri = CreateUrl.GetUrl(requestType, request.Reward.ProgramId, request.Reward.Id);
                     content = HttpClientFactory.JsonContentFactory.CreateJsonContent(request.Reward);
+                    break;
+                case PlatformLoyaltyServiceRequestType.AllUsers:
+                    uri = CreateUrl.GetUrl(requestType);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(requestType), requestType, null);

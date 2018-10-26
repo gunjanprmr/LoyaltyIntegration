@@ -44,6 +44,9 @@ namespace LoyaltyIntegration.Models.Core
                 case PlatformLoyaltyServiceRequestType.UpdateRewardById:
                     uriBuilder.Path += Constants.Loyalty + loyaltyId + Constants.Reward + id;
                     break;
+                case PlatformLoyaltyServiceRequestType.AllUsers:
+                    uriBuilder.Path += Constants.Users;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(requestType), requestType, null);
             }

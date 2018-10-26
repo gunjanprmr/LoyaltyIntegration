@@ -1,8 +1,10 @@
-﻿using LoyaltyIntegration.CommonObjects;
+﻿using System.CodeDom;
+using LoyaltyIntegration.CommonObjects;
 using LoyaltyIntegration.Models.Enum;
 using LoyaltyIntegration.Models.Loyalty;
 using LoyaltyIntegration.Models.LoyaltyRewards;
 using LoyaltyIntegration.Models.LoyaltyTiers;
+using LoyaltyIntegration.Models.LoyaltyUsers;
 
 namespace LoyaltyIntegration.Models.Core
 {
@@ -433,6 +435,20 @@ namespace LoyaltyIntegration.Models.Core
         }
 
         #endregion Rewards
+
+        #region Users
+
+        public Users GetUsers()
+        {
+            const PlatformLoyaltyServiceRequestType requestType = PlatformLoyaltyServiceRequestType.AllUsers;
+            const string method = Constants.Get;
+            var commonRequest = new PlatformLoyaltyServiceRequest();
+            var allUsers = _platformLoyaltyServiceApi.UsersResponse(requestType, commonRequest, method);
+            return allUsers;
+        }
+        
+
+        #endregion Users
 
         #endregion 2nd Approch
 

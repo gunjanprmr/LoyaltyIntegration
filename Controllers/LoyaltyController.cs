@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Web.Http;
 using LoyaltyIntegration.Models.Core;
 using LoyaltyIntegration.Models.Loyalty;
 using LoyaltyIntegration.Models.LoyaltyRewards;
 using LoyaltyIntegration.Models.LoyaltyTiers;
+using LoyaltyIntegration.Models.LoyaltyUsers;
 
 namespace LoyaltyIntegration.Controllers
 {
@@ -110,6 +114,14 @@ namespace LoyaltyIntegration.Controllers
         {
             var updatedRewardById = _loyaltyManager.UpdateRewardById(rewardRequest);
             return updatedRewardById;
+        }
+
+        [HttpGet]
+        [Route("users/{page:int?}/{size:int?}")]
+        public Users GetUsers([FromUri]int? page = null, [FromUri]int? size = null)
+        {
+            var allUsers = _loyaltyManager.GetUsers();
+            return allUsers;
         }
     }
 }

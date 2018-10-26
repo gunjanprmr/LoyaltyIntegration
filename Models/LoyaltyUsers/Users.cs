@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
@@ -34,6 +35,7 @@ namespace LoyaltyIntegration.Models.LoyaltyUsers
         /// </summary>
         [DataMember(Name = "items", EmitDefaultValue = false)]
         [JsonProperty(PropertyName = "items")]
-        public User Items { get; set; }
+        //public User Items { get; set; }
+        public List<User> Items { get; set; }
     }
 }

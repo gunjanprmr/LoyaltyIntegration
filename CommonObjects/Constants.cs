@@ -18,5 +18,6 @@ namespace LoyaltyIntegration.CommonObjects
         public const string Loyalty = "programs/";
         public const string Tier = "/tiers/";
         public const string Reward = "/rewards/";
+        public const string Users = "users";
     }
 }

@@ -13,6 +13,7 @@
         AllRewards,
         CreateReward,
         GetRewardById,
-        UpdateRewardById
+        UpdateRewardById,
+        AllUsers
     }
 }
