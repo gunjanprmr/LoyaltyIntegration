@@ -33,7 +33,7 @@ namespace LoyaltyIntegration.Controllers
         /// <summary>
         /// Get specific loyalty program.
         /// </summary>
-        /// <param name="loyaltyId"></param>
+        /// <param name="loyaltyId">Specific loyalty id.</param>
         /// <returns></returns>
         [HttpGet]
         [Route("programs/{loyaltyId}")]
@@ -59,7 +59,7 @@ namespace LoyaltyIntegration.Controllers
         /// <summary>
         /// Update specific loyalty program.
         /// </summary>
-        /// <param name="loyaltyRequest"></param>
+        /// <param name="loyaltyRequest">Loyalty request payload</param>
         /// <returns></returns>
         [HttpPut]
         [Route("programs/{loyaltyId}")]
@@ -72,7 +72,7 @@ namespace LoyaltyIntegration.Controllers
         /// <summary>
         /// Get all tiers for a loyalty program.
         /// </summary>
-        /// <param name="loyaltyId"></param>
+        /// <param name="loyaltyId">Specific loyalty id</param>
         /// <returns></returns>
         [HttpGet]
         [Route("programs/{loyaltyId}/tiers")]
@@ -85,8 +85,8 @@ namespace LoyaltyIntegration.Controllers
         /// <summary>
         /// Get specific tier for a loyalty program.
         /// </summary>
-        /// <param name="loyaltyId"></param>
-        /// <param name="tierId"></param>
+        /// <param name="loyaltyId">Specific loyalty id</param>
+        /// <param name="tierId">Specific tier id for the loyalty</param>
         /// <returns></returns>
         [HttpGet]
         [Route("programs/{loyaltyId}/tiers/{tierId}")]
@@ -125,7 +125,7 @@ namespace LoyaltyIntegration.Controllers
         /// <summary>
         /// Get all rewards for a loyalty program.
         /// </summary>
-        /// <param name="loyaltyId"></param>
+        /// <param name="loyaltyId">Specific loyalty id</param>
         /// <returns></returns>
         [HttpGet]
         [Route("programs/{loyaltyId}/rewards")]
@@ -138,8 +138,8 @@ namespace LoyaltyIntegration.Controllers
         /// <summary>
         /// Get specific reward for a loyalty program.
         /// </summary>
-        /// <param name="loyaltyId"></param>
-        /// <param name="rewardId"></param>
+        /// <param name="loyaltyId">Specific loyalty id</param>
+        /// <param name="rewardId">Specific reward id for the loyalty</param>
         /// <returns></returns>
         [HttpGet]
         [Route("programs/{loyaltyId}/rewards/{rewardId}")]
