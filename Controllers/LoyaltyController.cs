@@ -1,25 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web.Http;
-using LoyaltyIntegration.Models.Core;
+﻿using LoyaltyIntegration.Models.Core;
 using LoyaltyIntegration.Models.Loyalty;
 using LoyaltyIntegration.Models.LoyaltyRewards;
 using LoyaltyIntegration.Models.LoyaltyTiers;
 using LoyaltyIntegration.Models.LoyaltyUsers;
+using System.Web.Http;
 
 namespace LoyaltyIntegration.Controllers
 {
+    /// <inheritdoc />
     public class LoyaltyController : ApiController
     {
         private readonly LoyaltyManager _loyaltyManager;
 
+        /// <inheritdoc />
         public LoyaltyController()
         {
             _loyaltyManager = new LoyaltyManager();
         }
 
+        /// <summary>
+        /// Retrieves all loyalty programs.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("programs")]
         public LoyaltyPrograms GetAllLoyalties()
@@ -28,6 +30,11 @@ namespace LoyaltyIntegration.Controllers
             return getAllLoyalties;
         }
 
+        /// <summary>
+        /// Get specific loyalty program.
+        /// </summary>
+        /// <param name="loyaltyId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("programs/{loyaltyId}")]
         public LoyaltyProgram GetLoyaltyById(string loyaltyId)
@@ -36,6 +43,11 @@ namespace LoyaltyIntegration.Controllers
             return getLoyaltyById;
         }
 
+        /// <summary>
+        /// Create new loyalty program.
+        /// </summary>
+        /// <param name="loyaltyRequest"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("programs")]
         public LoyaltyProgram CreateLoyalty([FromBody] LoyaltyProgram loyaltyRequest)
@@ -44,6 +56,11 @@ namespace LoyaltyIntegration.Controllers
             return savedLoyalty;
         }
 
+        /// <summary>
+        /// Update specific loyalty program.
+        /// </summary>
+        /// <param name="loyaltyRequest"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("programs/{loyaltyId}")]
         public LoyaltyProgram UpdateLoyaltyById([FromBody] LoyaltyProgram loyaltyRequest)
@@ -52,6 +69,11 @@ namespace LoyaltyIntegration.Controllers
             return updatedLoyalty;
         }
 
+        /// <summary>
+        /// Get all tiers for a loyalty program.
+        /// </summary>
+        /// <param name="loyaltyId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("programs/{loyaltyId}/tiers")]
         public Tiers GetAllTiersForSpecificLoyalty(string loyaltyId)
@@ -60,6 +82,12 @@ namespace LoyaltyIntegration.Controllers
             return allTiers;
         }
 
+        /// <summary>
+        /// Get specific tier for a loyalty program.
+        /// </summary>
+        /// <param name="loyaltyId"></param>
+        /// <param name="tierId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("programs/{loyaltyId}/tiers/{tierId}")]
         public Tier GetTierById(string loyaltyId, string tierId)
@@ -68,6 +96,11 @@ namespace LoyaltyIntegration.Controllers
             return tier;
         }
 
+        /// <summary>
+        /// Create new tier for a loyalty program.
+        /// </summary>
+        /// <param name="tierRequest"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("programs/{loyaltyId}/tiers")]
         public Tier CreateTier(Tier tierRequest)
@@ -76,6 +109,11 @@ namespace LoyaltyIntegration.Controllers
             return createdTier;
         }
 
+        /// <summary>
+        /// Update new tier for a loyalty program.
+        /// </summary>
+        /// <param name="tierRequest"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("programs/{loyaltyId}/tiers/{tierId}")]
         public Tier UpdateTierById(Tier tierRequest)
@@ -84,6 +122,11 @@ namespace LoyaltyIntegration.Controllers
             return updatedTier;
         }
 
+        /// <summary>
+        /// Get all rewards for a loyalty program.
+        /// </summary>
+        /// <param name="loyaltyId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("programs/{loyaltyId}/rewards")]
         public Rewards GetAllRewards(string loyaltyId)
@@ -92,6 +135,12 @@ namespace LoyaltyIntegration.Controllers
             return allRewards;
         }
 
+        /// <summary>
+        /// Get specific reward for a loyalty program.
+        /// </summary>
+        /// <param name="loyaltyId"></param>
+        /// <param name="rewardId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("programs/{loyaltyId}/rewards/{rewardId}")]
         public Reward GetRewardById(string loyaltyId, string rewardId)
@@ -100,6 +149,11 @@ namespace LoyaltyIntegration.Controllers
             return getRewardById;
         }
 
+        /// <summary>
+        /// Create new reward for a loyalty program.
+        /// </summary>
+        /// <param name="rewardRequest"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("programs/{loyaltyId}/rewards")]
         public Reward CreateReward(Reward rewardRequest)
@@ -108,6 +162,11 @@ namespace LoyaltyIntegration.Controllers
             return createdReward;
         }
 
+        /// <summary>
+        /// Update new reward for a loyalty program.
+        /// </summary>
+        /// <param name="rewardRequest"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("programs/{loyaltyId}/rewards/{rewardId}")]
         public Reward UpdateRewardById(Reward rewardRequest)
@@ -116,6 +175,12 @@ namespace LoyaltyIntegration.Controllers
             return updatedRewardById;
         }
 
+        /// <summary>
+        /// Get all users.
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("users/{page:int?}/{size:int?}")]
         public Users GetUsers([FromUri]int? page = null, [FromUri]int? size = null)

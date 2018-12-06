@@ -82,3 +82,6 @@ C:\Gunjan-Stuff\Personal\Sample_Projects_VS2017\LoyaltyIntegration\LoyaltyIntegr
 C:\Gunjan-Stuff\Personal\Sample_Projects_VS2017\LoyaltyIntegration\LoyaltyIntegration\obj\Debug\LoyaltyIntegration.csproj.CopyComplete
 C:\Gunjan-Stuff\Personal\Sample_Projects_VS2017\LoyaltyIntegration\LoyaltyIntegration\obj\Debug\LoyaltyIntegration.dll
 C:\Gunjan-Stuff\Personal\Sample_Projects_VS2017\LoyaltyIntegration\LoyaltyIntegration\obj\Debug\LoyaltyIntegration.pdb
+C:\Gunjan-Stuff\Personal\Sample_Projects_VS2017\LoyaltyIntegration\LoyaltyIntegration\bin\LoyaltyIntegration.xml
+C:\Gunjan-Stuff\Personal\Sample_Projects_VS2017\LoyaltyIntegration\LoyaltyIntegration\bin\Swashbuckle.Core.dll
+C:\Gunjan-Stuff\Personal\Sample_Projects_VS2017\LoyaltyIntegration\LoyaltyIntegration\bin\WebActivatorEx.dll

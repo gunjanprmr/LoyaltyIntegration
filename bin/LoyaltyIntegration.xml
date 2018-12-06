@@ -1,0 +1,864 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LoyaltyIntegration</name>
+    </assembly>
+    <members>
+        <member name="T:LoyaltyIntegration.Controllers.LoyaltyController">
+            <inheritdoc />
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.GetAllLoyalties">
+            <summary>
+            Retrieves all loyalty programs.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.GetLoyaltyById(System.String)">
+            <summary>
+            Get specific loyalty program.
+            </summary>
+            <param name="loyaltyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.CreateLoyalty(LoyaltyIntegration.Models.Loyalty.LoyaltyProgram)">
+            <summary>
+            Create new loyalty program.
+            </summary>
+            <param name="loyaltyRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.UpdateLoyaltyById(LoyaltyIntegration.Models.Loyalty.LoyaltyProgram)">
+            <summary>
+            Update specific loyalty program.
+            </summary>
+            <param name="loyaltyRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.GetAllTiersForSpecificLoyalty(System.String)">
+            <summary>
+            Get all tiers for a loyalty program.
+            </summary>
+            <param name="loyaltyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.GetTierById(System.String,System.String)">
+            <summary>
+            Get specific tier for a loyalty program.
+            </summary>
+            <param name="loyaltyId"></param>
+            <param name="tierId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.CreateTier(LoyaltyIntegration.Models.LoyaltyTiers.Tier)">
+            <summary>
+            Create new tier for a loyalty program.
+            </summary>
+            <param name="tierRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.UpdateTierById(LoyaltyIntegration.Models.LoyaltyTiers.Tier)">
+            <summary>
+            Update new tier for a loyalty program.
+            </summary>
+            <param name="tierRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.GetAllRewards(System.String)">
+            <summary>
+            Get all rewards for a loyalty program.
+            </summary>
+            <param name="loyaltyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.GetRewardById(System.String,System.String)">
+            <summary>
+            Get specific reward for a loyalty program.
+            </summary>
+            <param name="loyaltyId"></param>
+            <param name="rewardId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.CreateReward(LoyaltyIntegration.Models.LoyaltyRewards.Reward)">
+            <summary>
+            Create new reward for a loyalty program.
+            </summary>
+            <param name="rewardRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.UpdateRewardById(LoyaltyIntegration.Models.LoyaltyRewards.Reward)">
+            <summary>
+            Update new reward for a loyalty program.
+            </summary>
+            <param name="rewardRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Controllers.LoyaltyController.GetUsers(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Get all users.
+            </summary>
+            <param name="page"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Framework.HttpClientFactory.GetClient(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+                HttpClient Helper
+            </summary>
+        </member>
+        <member name="T:LoyaltyIntegration.Framework.HttpClientFactory.JsonContentFactory">
+            <summary>
+                StringContent Helper for POST and PUT request.
+                This will pass request in API call.
+            </summary>
+        </member>
+        <member name="M:LoyaltyIntegration.Models.Core.CreateUrl.GetUrl(LoyaltyIntegration.Models.Enum.PlatformLoyaltyServiceRequestType,System.String,System.String)">
+            <summary>
+                Create URL dynamically.
+            </summary>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyRewards.Reward">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.Name">
+            <summary>
+                Marketing name for the reward
+            </summary>
+            <value>Marketing name for the reward</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.Enabled">
+            <summary>
+                Boolean that determines whether a reward is enabled
+            </summary>
+            <value>Boolean that determines whether a reward is enabled</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.Id">
+            <summary>
+                UUID for program
+            </summary>
+            <value>UUID for program</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.ProgramId">
+            <summary>
+                Parent program ID
+            </summary>
+            <value>Parent program ID</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.CreateDate">
+            <summary>
+                Date in UTC that a reward was created
+            </summary>
+            <value>Date in UTC that a reward was created</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.ModifiedDate">
+            <summary>
+                Date in UTC that a reward was modified
+            </summary>
+            <value>Date in UTC that a reward was modified</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.Creator">
+            <summary>
+                User ID of reward creator (admin)
+            </summary>
+            <value>User ID of reward creator (admin)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.Title">
+            <summary>
+                User facing terms and conditions for the reward (localized)
+            </summary>
+            <value>User facing terms and conditions for the reward (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.Description">
+            <summary>
+                User facing terms and conditions for the reward (localized)
+            </summary>
+            <value>User facing terms and conditions for the reward (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.Terms">
+            <summary>
+                User facing terms and conditions for the reward (localized)
+            </summary>
+            <value>User facing terms and conditions for the reward (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.ImageUrl">
+            <summary>
+                User facing terms and conditions for the reward (localized)
+            </summary>
+            <value>User facing terms and conditions for the reward (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.TermsUrl">
+            <summary>
+                User facing terms and conditions for the reward (localized)
+            </summary>
+            <value>User facing terms and conditions for the reward (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.Price">
+            <summary>
+                Number of points to be redeemed to purchase reward
+            </summary>
+            <value>Number of points to be redeemed to purchase reward</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.Products">
+            <summary>
+                List of product SKUs eligible to redeem reward
+            </summary>
+            <value>List of product SKUs eligible to redeem reward</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.ExternalCode">
+            <summary>
+                External Code used by POS Mapping system
+            </summary>
+            <value>External Code used by POS Mapping system</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.ValidityLength">
+            <summary>
+                Number of days to use the reward
+            </summary>
+            <value>Number of days to use the reward</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.TierIds">
+            <summary>
+                IDs of tiers in which the reward can be obtained
+            </summary>
+            <value>IDs of tiers in which the reward can be obtained</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.Purchaseable">
+            <summary>
+                Is this item able to be purchased
+            </summary>
+            <value>Is this item able to be purchased</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.Reward.ExternalId">
+            <summary>
+                ID of transaction, event, customer service log event, redemption, offer, or bonus
+            </summary>
+            <value>ID of transaction, event, customer service log event, redemption, offer, or bonus</value>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyRewards.RewardProducts">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.RewardProducts.Id">
+            <summary>
+                Ordered Item Identifier
+            </summary>
+            <value>Ordered Item Identifier</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyRewards.RewardProducts.AltId">
+            <summary>
+                Ordered Item Alternate Identifier (used if secondary identification is required)
+            </summary>
+            <value>Ordered Item Alternate Identifier (used if secondary identification is required)</value>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyRewards.Rewards">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.Name">
+            <summary>
+                Marketing name for the tier
+            </summary>
+            <value>Marketing name for the tier</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.Enabled">
+            <summary>
+                Boolean that determines whether a tier is enabled
+            </summary>
+            <value>Boolean that determines whether a tier is enabled</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.Id">
+            <summary>
+                UUID for program
+            </summary>
+            <value>UUID for program</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.ProgramId">
+            <summary>
+                Parent program ID
+            </summary>
+            <value>Parent program ID</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.CreateDate">
+            <summary>
+                Date in UTC that a tier was created
+            </summary>
+            <value>Date in UTC that a tier was created</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.ModifiedDate">
+            <summary>
+                Date in UTC that a tier was modified
+            </summary>
+            <value>Date in UTC that a tier was modified</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.Creator">
+            <summary>
+                User ID of tier creator (admin)
+            </summary>
+            <value>User ID of tier creator (admin)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.Title">
+            <summary>
+                User facing terms and conditions for the tier (localized)
+            </summary>
+            <value>User facing terms and conditions for the tier (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.Description">
+            <summary>
+                User facing terms and conditions for the tier (localized)
+            </summary>
+            <value>User facing terms and conditions for the tier (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.Terms">
+            <summary>
+                User facing terms and conditions for the tier (localized)
+            </summary>
+            <value>User facing terms and conditions for the tier (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.ImageUrl">
+            <summary>
+                User facing terms and conditions for the tier (localized)
+            </summary>
+            <value>User facing terms and conditions for the tier (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.TermsUrl">
+            <summary>
+                User facing terms and conditions for the tier (localized)
+            </summary>
+            <value>User facing terms and conditions for the tier (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.Minimum">
+            <summary>
+                Number of points to qualify for the tier
+            </summary>
+            <value>Number of points to qualify for the tier</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.PeriodType">
+            <summary>
+                Rolling - last n days, Anniversary - n days from tier qualification date, Calendar - calendar year is qualification
+                period
+            </summary>
+            <value>
+                Rolling - last n days, Anniversary - n days from tier qualification date, Calendar - calendar year is
+                qualification period
+            </value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.Period">
+            <summary>
+                Number of days to earn qualifying points
+            </summary>
+            <value>Number of days to earn qualifying points</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.Points">
+            <summary>
+                Number of points to earn from qualifying transaction (decimal allowed)
+            </summary>
+            <value>Number of points to earn from qualifying transaction (decimal allowed)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.Increment">
+            <summary>
+                Number of qualifying transaction bases that earn points
+            </summary>
+            <value>Number of qualifying transaction bases that earn points</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyTiers.Tier.RoundingRules">
+            <summary>
+                Rounding method for calculating points
+            </summary>
+            <value>Rounding method for calculating points</value>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyTiers.Tiers">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:LoyaltyIntegration.Models.LoyaltyTiers.Tiers.ToString">
+            <summary>
+                Get the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:LoyaltyIntegration.Models.LoyaltyTiers.Tiers.ToJson">
+            <summary>
+                Get the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyUsers.ProgramOptin">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.ProgramOptin.ProgramId">
+            <summary>
+                Program ID
+            </summary>
+            <value>Program ID</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.ProgramOptin.Optin">
+            <summary>
+                True or False if user is opted in or not
+            </summary>
+            <value>True or False if user is opted in or not</value>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyUsers.User">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.User.Id">
+            <summary>
+                Gets or Sets Id
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.User.Programs">
+            <summary>
+                Gets or Sets Programs
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.User.Optins">
+            <summary>
+                Gets or Sets Optins
+            </summary>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyUsers.UserEarnings">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserEarnings.Id">
+            <summary>
+                Gets or Sets Id
+            </summary>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyUsers.UserPoint">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPoint.Id">
+            <summary>
+                UUID for entry
+            </summary>
+            <value>UUID for entry</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPoint.ProgramId">
+            <summary>
+                UUID for program
+            </summary>
+            <value>UUID for program</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPoint.TierId">
+            <summary>
+                UUID for tier
+            </summary>
+            <value>UUID for tier</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPoint.Points">
+            <summary>
+                Number of points added or subtracted
+            </summary>
+            <value>Number of points added or subtracted</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPoint.Type">
+            <summary>
+                In the case of a transaction for which an offer or bonus concurrently awards points, each addition of points is
+                listed separately
+            </summary>
+            <value>
+                In the case of a transaction for which an offer or bonus concurrently awards points, each addition of points is
+                listed separately
+            </value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPoint.TypeDescription">
+            <summary>
+                Optional explanation of type
+            </summary>
+            <value>Optional explanation of type</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPoint.ExternalId">
+            <summary>
+                ID of transaction, event, customer service log event, redemption, offer, or bonus
+            </summary>
+            <value>ID of transaction, event, customer service log event, redemption, offer, or bonus</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPoint.Time">
+            <summary>
+                Time when points were added or subtracted
+            </summary>
+            <value>Time when points were added or subtracted</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPoint.PendingUntil">
+            <summary>
+                Time when points are available. Applies to added points only
+            </summary>
+            <value>Time when points are available. Applies to added points only</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPoint.TimeExpires">
+            <summary>
+                Time when points expire. Applies to added points only
+            </summary>
+            <value>Time when points expire. Applies to added points only</value>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyUsers.UserPoints">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyUsers.UserPrograms">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPrograms.Balance">
+            <summary>
+                Gets or Sets Balance
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPrograms.Earnings">
+            <summary>
+                Gets or Sets Earnings
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPrograms.Offers">
+            <summary>
+                Gets or Sets Offers
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPrograms.PointsToNextReward">
+            <summary>
+                Gets or Sets PointsToNextReward
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPrograms.ProgramId">
+            <summary>
+                Gets or Sets ProgramId
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPrograms.TierId">
+            <summary>
+                Gets or Sets TierId
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPrograms.Optin">
+            <summary>
+                Gets or Sets Optin
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPrograms.Points">
+            <summary>
+                Gets or Sets Points
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserPrograms.Rewards">
+            <summary>
+                Gets or Sets Rewards
+            </summary>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyUsers.UserReward">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserReward.Id">
+            <summary>
+                UUID for entry
+            </summary>
+            <value>UUID for entry</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserReward.RewardId">
+            <summary>
+                UUID for reward
+            </summary>
+            <value>UUID for reward</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserReward.ProgramId">
+            <summary>
+                UUID for program
+            </summary>
+            <value>UUID for program</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserReward.TierId">
+            <summary>
+                UUID for tier
+            </summary>
+            <value>UUID for tier</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserReward.Status">
+            <summary>
+                Reward status
+            </summary>
+            <value>Reward status</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserReward.AwardedOn">
+            <summary>
+                Time when reward was awarded
+            </summary>
+            <value>Time when reward was awarded</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserReward.RedeemedOn">
+            <summary>
+                Time when reward was redeemed
+            </summary>
+            <value>Time when reward was redeemed</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserReward.ExpiredOn">
+            <summary>
+                Time when reward expired
+            </summary>
+            <value>Time when reward expired</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserReward.Expires">
+            <summary>
+                Time when reward expires
+            </summary>
+            <value>Time when reward expires</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.UserReward.ExternalId">
+            <summary>
+                ID of transaction, event, customer service log event, redemption, offer, or bonus
+            </summary>
+            <value>ID of transaction, event, customer service log event, redemption, offer, or bonus</value>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyUsers.UserRewards">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:LoyaltyIntegration.Models.LoyaltyUsers.Users">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.Users.Size">
+            <summary>
+                Gets or Sets Size
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.Users.Page">
+            <summary>
+                Gets or Sets Page
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.Users.Total">
+            <summary>
+                Gets or Sets Total
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.LoyaltyUsers.Users.Items">
+            <summary>
+                Gets or Sets Items
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.Localization.Code">
+            <summary>
+            Culture code (en-US)
+            </summary>
+            <value>Culture code (en-US)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.Localization.Translation">
+            <summary>
+            Localized string
+            </summary>
+            <value>Localized string</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LocalizationImage.Code">
+            <summary>
+            Culture code (en-US)
+            </summary>
+            <value>Culture code (en-US)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LocalizationImage.Translation">
+            <summary>
+            Localized string
+            </summary>
+            <value>Localized string</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LocalizationImage.Size">
+            <summary>
+            Description of image size
+            </summary>
+            <value>Description of image size</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LocalizationImage.Context">
+            <summary>
+            Gets or Sets Context
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.Name">
+            <summary>
+            Marketing name for the program
+            </summary>
+            <value>Marketing name for the program</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.Enabled">
+            <summary>
+            Boolean that determines whether a program is enabled
+            </summary>
+            <value>Boolean that determines whether a program is enabled</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.Id">
+            <summary>
+            UUID for program
+            </summary>
+            <value>UUID for program</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.CreateDate">
+            <summary>
+            Date in UTC that a program was created
+            </summary>
+            <value>Date in UTC that a program was created</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.ModifiedDate">
+            <summary>
+            Date in UTC that a program was modified
+            </summary>
+            <value>Date in UTC that a program was modified</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.Creator">
+            <summary>
+            User ID of program creator (admin)
+            </summary>
+            <value>User ID of program creator (admin)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.Title">
+            <summary>
+            User facing terms and conditions for the program (localized)
+            </summary>
+            <value>User facing terms and conditions for the program (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.Description">
+            <summary>
+            User facing terms and conditions for the program (localized)
+            </summary>
+            <value>User facing terms and conditions for the program (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.Terms">
+            <summary>
+            User facing terms and conditions for the program (localized)
+            </summary>
+            <value>User facing terms and conditions for the program (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.ImageUrl">
+            <summary>
+            User facing terms and conditions for the program (localized)
+            </summary>
+            <value>User facing terms and conditions for the program (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.TermsUrl">
+            <summary>
+            User facing terms and conditions for the program (localized)
+            </summary>
+            <value>User facing terms and conditions for the program (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.Faq">
+            <summary>
+            User facing frequently asked questions for the program (localized)
+            </summary>
+            <value>User facing frequently asked questions for the program (localized)</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.AvailabilityStart">
+            <summary>
+            Date program starts
+            </summary>
+            <value>Date program starts</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.AvailabilityEnd">
+            <summary>
+            Date program ends
+            </summary>
+            <value>Date program ends</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.EarningBasis">
+            <summary>
+            Transactions - points are earned per transaction, Spend - points are earned per subtotal dollar, Products - points are earned per qualifying product
+            </summary>
+            <value>Transactions - points are earned per transaction, Spend - points are earned per subtotal dollar, Products - points are earned per qualifying product</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.EligibleTransactionMinimum">
+            <summary>
+            Number of dollars for a transaction to be eligible for points
+            </summary>
+            <value>Number of dollars for a transaction to be eligible for points</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.EligibleProducts">
+            <summary>
+            List of SKUs eligible for points
+            </summary>
+            <value>List of SKUs eligible for points</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.AccumulationLimit">
+            <summary>
+            Finite - point balance reaches maximum, auto-redeems for reward, and resets, Infinite - point balance has no maximum
+            </summary>
+            <value>Finite - point balance reaches maximum, auto-redeems for reward, and resets, Infinite - point balance has no maximum</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.FiniteAccumulationMaximum">
+            <summary>
+            Maximum point balance for auto-redemption for a finite program
+            </summary>
+            <value>Maximum point balance for auto-redemption for a finite program</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.FiniteAccumulationReward">
+            <summary>
+            ID of reward for a finite program
+            </summary>
+            <value>ID of reward for a finite program</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.DailyMaximum">
+            <summary>
+            Maximum number of points that can be earned in one day
+            </summary>
+            <value>Maximum number of points that can be earned in one day</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.EarningDelay">
+            <summary>
+            Number of minutes between points earned being posted and being available for redemption
+            </summary>
+            <value>Number of minutes between points earned being posted and being available for redemption</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.PointsExpiration">
+            <summary>
+            Number of days between points being earned and points expiring
+            </summary>
+            <value>Number of days between points being earned and points expiring</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.PointsRedemptionRatePoints">
+            <summary>
+            Number of points to redeem
+            </summary>
+            <value>Number of points to redeem</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.PointsRedemptionRateDollars">
+            <summary>
+            Number of dollars to discount
+            </summary>
+            <value>Number of dollars to discount</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.ExcludedProducts">
+            <summary>
+            List of SKUs ineligible for points
+            </summary>
+            <value>List of SKUs ineligible for points</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.EligibleStores">
+            <summary>
+            Gets or Sets EligibleStores
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.EligibleTerritories">
+            <summary>
+            Gets or Sets EligibleTerritories
+            </summary>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyProgram.RequireOptin">
+            <summary>
+            Boolean that determines whether a program requires a user opt-in to process
+            </summary>
+            <value>Boolean that determines whether a program requires a user opt-in to process</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyEligibleStores.Inclusive">
+            <summary>
+            Include = true, Exclude = false to say whether these items are included or excluded
+            </summary>
+            <value>Include = true, Exclude = false to say whether these items are included or excluded</value>
+        </member>
+        <member name="P:LoyaltyIntegration.Models.Loyalty.LoyaltyEligibleStores.Stores">
+            <summary>
+            Gets or Sets Items
+            </summary>
+        </member>
+    </members>
+</doc>
